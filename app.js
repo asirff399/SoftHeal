@@ -20,7 +20,7 @@ const contactUs = (event) => {
     console.log(postData);
     const token = localStorage.getItem("token")
         // console.log(token)
-    fetch("http://127.0.0.1:8000/contact_us/", {
+    fetch("https://softheal-api-drf.onrender.com/contact_us/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const contactUs = (event) => {
 };
 const loadAllPost = () =>{
     // document.getElementById("loader").style.display = "block";
-    fetch("http://127.0.0.1:8000/post/list/")
+    fetch("https://softheal-api-drf.onrender.com/post/list/")
     .then((res)=>res.json())
     .then((data)=>{
         if(data.length > 0){
@@ -88,7 +88,7 @@ const displayAllPost = (posts) => {
 }
 const loadInitialPost = () => {
     // document.getElementById("loader").style.display = "block";
-    fetch("http://127.0.0.1:8000/post/list/")
+    fetch("https://softheal-api-drf.onrender.com/post/list/")
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)
@@ -132,7 +132,7 @@ const displayInitialPost = (posts) => {
     })
 }
 const loadTeam = () =>{
-    fetch("http://127.0.0.1:8000/team/")
+    fetch("https://softheal-api-drf.onrender.com/team/")
     .then((res) => res.json())
     .then((data) => {
         // console.log(data)
@@ -159,7 +159,7 @@ const loadTeam = () =>{
     }) 
 }
 const loadAllService = () =>{
-    fetch("http://127.0.0.1:8000/service/")
+    fetch("https://softheal-api-drf.onrender.com/service/")
     .then((res) => res.json())
     .then((data) => {
         // console.log(data)
@@ -219,7 +219,7 @@ const addVolunteer = async (event) =>{
         }
         console.log(postData)
 
-        const response = await fetch("http://127.0.0.1:8000/volunteer/",{
+        const response = await fetch("https://softheal-api-drf.onrender.com/volunteer/",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
@@ -255,7 +255,7 @@ const postDetails = ()=>{
     const param = new URLSearchParams(window.location.search).get("post_id")
     localStorage.setItem("post_id",param)
     
-    fetch(`http://127.0.0.1:8000/post/list/${param}`)
+    fetch(`https://softheal-api-drf.onrender.com/post/list/${param}`)
     .then((res)=>res.json())
     .then((data)=> {
         // console.log(data)
@@ -271,7 +271,7 @@ const postDetails = ()=>{
     })
 }
 const loadAllPostType = () => {
-    fetch("http://127.0.0.1:8000/post/types/")
+    fetch("https://softheal-api-drf.onrender.com/post/types/")
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)
@@ -293,7 +293,7 @@ const loadAllPostType = () => {
 const loadPostCategoryWise = (search) =>{
     // console.log(search)
     // document.getElementById("loader").style.display = "block";
-    fetch(`http://127.0.0.1:8000/post/list/?search=${search? search : "" }`)
+    fetch(`https://softheal-api-drf.onrender.com/post/list/?search=${search? search : "" }`)
     .then((res)=>res.json())
     .then((data)=>{
         // displayPetCategoryWise(data?.results)

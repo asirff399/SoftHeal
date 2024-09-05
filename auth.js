@@ -23,7 +23,7 @@ const handelRegistration = (event) => {
         
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {          
             
-            fetch("http://127.0.0.1:8000/account/register/",{
+            fetch("https://softheal-api-drf.onrender.com/account/register/",{
                 method:"POST",
                 headers:{"Content-Type":"application/json",},
                 body:JSON.stringify(info)
@@ -61,7 +61,7 @@ const handleLogin = (event) =>{
     const password = getValue("login-password")
     console.log(username,password)
     if(username,password){
-        fetch("http://127.0.0.1:8000/account/login/",{
+        fetch("https://softheal-api-drf.onrender.com/account/login/",{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({username,password}),
@@ -83,7 +83,7 @@ const handleLogin = (event) =>{
 }
 const handleLogout = () =>{
     const token = localStorage.getItem("token")
-    fetch("http://127.0.0.1:8000/account/logout/",{
+    fetch("https://softheal-api-drf.onrender.com/account/logout/",{
         method:"POST",
         headers:{
             Authorization:`Token ${token}`,
@@ -102,7 +102,7 @@ const handleLogout = () =>{
 const loadUserDetails = () => {
     const user_id = localStorage.getItem("user_id");
   
-    fetch(`http://127.0.0.1:8000/users/${user_id}`)
+    fetch(`https://softheal-api-drf.onrender.com/users/${user_id}`)
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("username", data.username);
@@ -115,7 +115,7 @@ const loadUserDetails = () => {
         }
       });
     const custom_id = localStorage.getItem("custom_id");
-    fetch(`http://127.0.0.1:8000/account/list/${custom_id}`)
+    fetch(`https://softheal-api-drf.onrender.com/account/list/${custom_id}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data)
@@ -130,7 +130,7 @@ const loadUserDetails = () => {
   };
 const loadCustomId = () => {
     const user_id = localStorage.getItem("user_id");
-    fetch(`http://127.0.0.1:8000/account/list/?search=${user_id}`)
+    fetch(`https://softheal-api-drf.onrender.com/account/list/?search=${user_id}`)
       .then((res) => res.json())
       .then((data) =>{
         // console.log(data)
@@ -148,7 +148,7 @@ const deposit = (event) => {
   
     // console.log(data);
     const token = localStorage.getItem("token");
-    fetch("http://127.0.0.1:8000/transaction/deposit/", {
+    fetch("https://softheal-api-drf.onrender.com/transaction/deposit/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -177,7 +177,7 @@ const donation = (event) => {
     const token = localStorage.getItem("token");
     const post_id = localStorage.getItem("post_id");
 
-    fetch(`http://127.0.0.1:8000/post/donate/${post_id}`, {
+    fetch(`https://softheal-api-drf.onrender.com/post/donate/${post_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
