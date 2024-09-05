@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  <!-- All Post -->
+   <h1 class="text-center mx-auto my-11 font-mono text-4xl font-bold uppercase">All Projects</h1>
+  <div>
+    <!-- Post Category -->
+    <div class="w-4/6 mx-auto font-sans p-4">
+      <div class="w-3/6 mx-auto ">
+        <ul id="post-types" class="flex justify-center">
+          <li onclick="loadAllPost()" class="tab text-blue-600 font-bold text-[15px] py-2.5 px-5 border-b-2 border-blue-600 cursor-pointer">
+              All
+          </li>
+      </ul>
+      </div>
+      
+  </div>
+
+
+
+    <!-- <div class="font-sans p-4 " >
+      <ul id="pet-types" class="w-2/3 flex flex-wrap justify-center gap-3 bg-white p-2 rounded-full shadow-md mx-auto max-w-full" style="margin: auto; ">
+          <button type="button" onclick="loadAllPet()"
+                  class="category-btn font-mono font-bold">All
+          </button>
+      </ul>
+    </div> -->
+    <!-- Posts -->
+    <div id="All-post" class="w-4/6 mx-auto flex flex-wrap gap-6 my-16 "></div>
+    <div id="category-post" class="flex flex-wrap"></div>
+ </div>
+
+  <!-- Footer -->
+  <div id="footer" class="w-full"></div>
+  <!-- Scripts -->
+  <script src="./app.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./base.js"></script>
+
+</body>
+</html>

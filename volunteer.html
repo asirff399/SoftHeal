@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-rose-200">
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  <!--Signup-->
+  <div class="flex justify-center items-center min-h-screen">
+    <div class="w-full max-w-5xl bg-white rounded-lg shadow-lg flex">
+        
+        <!-- Left Side: Image -->
+        <div class="w-1/2 p-8 hidden lg:block">
+            <img src="./images/Charity.jpg" alt="Volunteer Image" class="rounded-lg object-fill h-full w-full">
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="w-full lg:w-1/2 p-8">
+            <!-- Form Title -->
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-6">Volunteer Registration</h2>
+
+            <!-- Form -->
+            <form id="volunteer" onsubmit="addVolunteer(event)" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" name="name" id="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" name="email" id="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                    <input type="text" name="phone" id="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                    <select name="gender" id="gender" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="branch" class="block text-sm font-medium text-gray-700">Branch</label>
+                    <select name="branch" id="branch" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        <option value="Rajshahi">Rajshahi</option>
+                        <option value="Rangpur">Rangpur</option>
+                        <option value="Mymensingh">Mymensingh</option>
+                        <option value="Khulna">Khulna</option>
+                        <option value="Dhaka">Dhaka</option>
+                        <option value="Barisal">Barisal</option>
+                        <option value="Sylhet">Sylhet</option>
+                        <option value="Chittagong">Chittagong</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="image" class="block text-sm font-medium text-gray-700">Image URL</label>
+                    <input type="file" name="image" id="image" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <button type="submit" class="w-full px-4 py-2 text-white bg-black hover:bg-gray-200 hover:text-black rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+  <!-- Footer -->
+  <div id="footer" class="w-full"></div>
+  <!-- Scripts -->
+  <script src="./base.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./app.js"></script>
+ 
+</body>
+</html>
