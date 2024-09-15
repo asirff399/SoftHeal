@@ -115,7 +115,7 @@ const displayInitialPost = (posts) => {
         div.classList.add("post-card")
         const formattedDate = formatDate(post.created_on);
         div.innerHTML = `
-                <div class="bg-white rounded overflow-hidden" style="width: 360px;">
+                <div class="bg-white rounded overflow-hidden sm:w-3/6" style="width: 500px;">
                     <img class="h-48 w-full object-cover object-center" src=${post.image} alt="Product Image" />
                     <div class="p-6">
                         <h1 class="mb-2 text-xl font-medium dark:text-white text-gray-900"><strong>${post.name}</strong> </h1>
@@ -305,6 +305,7 @@ const loadPostCategoryWise = (search) =>{
         else{
             // document.getElementById("nodata").style.display = "block";
             // document.getElementById("loader").style.display = "none";
+            
         }
         
     })

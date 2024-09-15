@@ -13,14 +13,14 @@
         }
     </script>
 </head>
-<body class="bg-blueGray-200">
+<body class="bg-blueGray-300">
   <!-- Navbar -->
   <div id="navbar"></div>
   <!-- Post Details -->
 
   <div class="flex justify-center items-center my-11">
     <div class="w-full max-w-7xl bg-white rounded-lg shadow-lg flex flex-col lg:flex-row">
-        
+
         <!-- Left Side: Image and Description -->
         <div class="w-full lg:w-1/2 p-8">
             <img id="pd-image" src="" alt="Donation Image" class="rounded-lg object-cover h-full w-full mb-6">
@@ -72,12 +72,22 @@
         </div>
     </div>
   </div>
-        <div class="w-4/6 mx-auto font-mono">
+        <div class="w-4/6 mx-auto font-mono mb-11">
             <h2 id="pd-name" class="text-4xl font-bold text-gray-800 mb-4"></h2>
             <p id="pd-description" class="text-gray-700 mb-4 font-bold "> </p>
         </div>
-  
-  
+
+        <div id="admin" class="fixed top-24 right-24">
+            <div class="inline-flex rounded-md shadow-sm" role="group">
+              <a href="" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 ">
+                Edit
+              </a>
+              <a href="" onclick="deletePost()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 ">
+                Delete
+              </a>
+            </div>
+        </div>
+
   <!-- Footer -->
   <div id="footer" class="w-full"></div>
   <!-- Scripts -->
