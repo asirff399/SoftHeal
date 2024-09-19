@@ -28,16 +28,17 @@
 
         <!-- Right Side: Details and Donation Form -->
         <div class="w-full lg:w-1/2 p-8 bg-gray-100">
+
             <!-- Project Details -->
             <div class="mb-8">
                 <h3 class="text-xl font-semibold text-gray-800">Project Details</h3>
                 <ul class="text-gray-700 mt-4">
-                    <li><strong>Goal:</strong> <span id="pd-target"></span></li>
-                    <li><strong>Raised:</strong> <span id="pd-collected"></span></li>
+                    <li><strong>Type:</strong> <span id="pd-type" class="right-0"></span></li>
+                    <li><strong>Goal:</strong> <span id="pd-target" class="text-red-900 font-bold"></span></li>
+                    <li><strong>Raised:</strong> <span id="pd-collected" class="text-teal-500 font-bold"></span></li>
                     <li><strong>Start Date:</strong> <span id="pd-created-on"></span></li>
                 </ul>
             </div>
-
             <!-- Donation Form -->
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Donate Now</h3>
@@ -77,14 +78,9 @@
             <p id="pd-description" class="text-gray-700 mb-4 font-bold "> </p>
         </div>
 
-        <div id="admin" class="fixed top-24 right-24">
-            <div class="inline-flex rounded-md shadow-sm" role="group">
-              <a href="" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 ">
-                Edit
-              </a>
-              <a href="" onclick="deletePost()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 ">
-                Delete
-              </a>
+        <div class="fixed top-24 right-24">
+            <div id="admin" class="inline-flex rounded-md shadow-sm" role="group">
+              
             </div>
         </div>
 
@@ -94,6 +90,7 @@
   <script src="./base.js"></script>
   <script src="./app.js"></script>
   <script src="./auth.js"></script>
+  <script src="./post.js"></script>
 
 </body>
 </html>

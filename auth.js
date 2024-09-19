@@ -125,6 +125,8 @@ const loadUserDetails = () => {
             document.getElementById("p-phone").innerText = `${data.phone}`;
             document.getElementById("p-address").innerText = `${data.address}`;
             document.getElementById("p-img").src = `${data.image}`;
+            localStorage.setItem('user_type',data.user_type)
+            
         }
       });
   };
@@ -137,7 +139,6 @@ const loadCustomId = () => {
         localStorage.setItem("custom_id", data[0].id)   
     })
 };
-
 const deposit = (event) => {
     event.preventDefault();
     const form = document.getElementById("deposit-form");
@@ -164,8 +165,11 @@ const deposit = (event) => {
       })
       
   };
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("deposit-form").addEventListener("submit", deposit);
+document.addEventListener('DOMContentLoaded', function () {
+  const element = document.getElementById('deposit-form');
+  if (element) {
+    element.addEventListener("submit", deposit);
+  }
 });
 const donation = (event) => {
     event.preventDefault();
@@ -193,12 +197,18 @@ const donation = (event) => {
       })
       
   };
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("deposit-form").addEventListener("submit", donation);
+document.addEventListener('DOMContentLoaded', function () {
+  const element = document.getElementById('donation-form');
+  if (element) {
+    element.addEventListener("submit", donation);
+  }
 });
-
-loadCustomId()
-loadUserDetails()
+document.addEventListener('DOMContentLoaded', function() {
+  loadCustomId()
+  loadUserDetails()
+});
+// loadCustomId()
+// loadUserDetails()
 
 // const handleReview = async (event) =>{
 //     event.preventDefault()

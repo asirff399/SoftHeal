@@ -19,7 +19,7 @@
     <!-- Add Post -->
     <div class="w-full my-11 bg-white mx-auto bg-opacity-90 p-8 rounded-2xl shadow-2xl max-w-lg ">
         <h1 class="text-3xl font-extrabold mb-6 text-gray-800 text-center">Create a New Post</h1>
-        <form id="add-post" method="POST" enctype="multipart/form-data">
+        <form id="add-post" onsubmit="addPost(event)" method="POST" enctype="multipart/form-data">
 
             <!-- Name Field -->
             <div class="mb-6">
@@ -47,8 +47,8 @@
 
             <!-- Post Type Field -->
             <div class="mb-6">
-                <label for="post_type" class="block text-lg font-semibold text-gray-700 mb-2">Post Type</label>
-                <select id="post_type" name="post_type" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-md" required>
+                <label for="post_add_type" class="block text-lg font-semibold text-gray-700 mb-2">Post Type</label>
+                <select id="post_add_type" name="post_add_type" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-md" required>
                     <!-- Example options -->
                     <option value="">Select post type</option>
                     <!-- <option value="1">Type 1</option>

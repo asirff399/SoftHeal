@@ -73,7 +73,7 @@ const displayAllPost = (posts) => {
                 <div class="bg-white rounded overflow-hidden" style="width: 360px;">
                     <img class="h-48 w-full object-cover object-center" src=${post.image} alt="Product Image" />
                     <div class="p-6">
-                        <h1 class="mb-2 text-xl font-medium dark:text-white text-gray-900"><strong>${post.name}</strong> </h1>
+                        <h1><strong class="mb-2 text-xl text-black font-mono font-bold">${post.name}</strong> </h1>
                         <p class="text-red-800 text-[13px] font-bold italic my-2">${formattedDate}</p>
                         <div class="flex justify-between mt-5">
                             <button class="bg-orange-500 text-white font-semibold py-2 px-4 rounded"><a href="./post_details.html?post_id=${post.id}">Donate Now <i class="fa-solid fa-arrow-right-long"></i></a></button>
@@ -115,10 +115,10 @@ const displayInitialPost = (posts) => {
         div.classList.add("post-card")
         const formattedDate = formatDate(post.created_on);
         div.innerHTML = `
-                <div class="bg-white rounded overflow-hidden sm:w-3/6" style="width: 500px;">
+                <div class="bg-white rounded overflow-hidden" >
                     <img class="h-48 w-full object-cover object-center" src=${post.image} alt="Product Image" />
                     <div class="p-6">
-                        <h1 class="mb-2 text-xl font-medium dark:text-white text-gray-900"><strong>${post.name}</strong> </h1>
+                        <h1 ><strong class="mb-2 text-xl text-black font-mono font-bold">${post.name}</strong> </h1>
                         <p class="text-red-800 text-[13px] font-bold italic my-2">${formattedDate}</p>
                         <div class="flex justify-between mt-5">
                             <button class="bg-orange-500 text-white font-semibold py-2 px-4 rounded"><a href="./post_details.html?post_id=${post.id}">Donate Now <i class="fa-solid fa-arrow-right-long"></i></a></button>
@@ -254,21 +254,24 @@ function formatDate2(dateStr) {
 const postDetails = ()=>{
     const param = new URLSearchParams(window.location.search).get("post_id")
     localStorage.setItem("post_id",param)
+    if(param){
+        fetch(`https://softheal-api-drf.onrender.com/post/list/${param}`)
+        .then((res)=>res.json())
+        .then((data)=> {
+            // console.log(data)
+            const formattedDate2 = formatDate2(data.created_on);
+
+            document.getElementById("pd-image").src = data.image
+            document.getElementById("pd-name").innerText = data.name
+            document.getElementById("pd-description").innerText = data.description
+            document.getElementById("pd-target").innerText =`$${data.target}`
+            document.getElementById("pd-collected").innerText =`$${data.collected}`
+            document.getElementById("pd-type").innerText =`${data.post_type}`
+            document.getElementById("pd-created-on").innerText = formattedDate2
+
+        })
+    }
     
-    fetch(`https://softheal-api-drf.onrender.com/post/list/${param}`)
-    .then((res)=>res.json())
-    .then((data)=> {
-        // console.log(data)
-        const formattedDate2 = formatDate2(data.created_on);
-
-        document.getElementById("pd-image").src = data.image
-        document.getElementById("pd-name").innerText = data.name
-        document.getElementById("pd-description").innerText = data.description
-        document.getElementById("pd-target").innerText =`$${data.target}`
-        document.getElementById("pd-collected").innerText =`$${data.collected}`
-        document.getElementById("pd-created-on").innerText = formattedDate2
-
-    })
 }
 const loadAllPostType = () => {
     fetch("https://softheal-api-drf.onrender.com/post/types/")
@@ -317,7 +320,6 @@ loadAllPostType()
 postDetails()
 loadAllPost()
 loadPostCategoryWise()
-
     /* <button type="button" onclick="loadPetCategoryWise('${type.name}')"
                         class="category-btn font-mono font-bold">${type.name}
                     </button>   */

@@ -7,7 +7,7 @@ fetch("navbar.html")
 
 		const token = localStorage.getItem("token")
 		// console.log(token)
-
+    
 		if(token){
 			navElement.innerHTML=`			
                 <a href="./profile.html" class="text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">PROFILE</a>
@@ -21,6 +21,24 @@ fetch("navbar.html")
 				</div>
 			`
 		}
+
+        const navMid = document.getElementById("nav-mid")
+        const admin = document.getElementById("admin")
+        const userType = localStorage.getItem("user_type")
+        const postID = localStorage.getItem("post_id")
+            if(userType === "Admin"){
+              navMid.innerHTML=`<li class="hover:text-indigo-400"><a href="./addPost.html">Add Post</a></li>`   
+              admin.innerHTML= `
+                    <a href="./editPost.html?post_id=${postID}" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 ">
+                        Edit
+                    </a>
+                    <button onclick="deletePost(${postID})" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 ">
+                        Delete
+                    </button>
+              `
+            }
+        
+
 
 })
 
