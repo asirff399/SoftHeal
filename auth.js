@@ -109,9 +109,11 @@ const loadUserDetails = () => {
         // console.log(data)
         if(data)
         {
-            document.getElementById("p-name").innerText = `${data.first_name} ${data.last_name}`;
-            document.getElementById("p-username").innerText = `${data.username}`;
-            document.getElementById("p-email").innerText = `${data.email}`;
+            // document.getElementById("p-name").innerText = `${data.first_name} ${data.last_name}`;
+            document.getElementById("p-first_name").value = data.first_name 
+            document.getElementById("p-last_name").value = data.last_name 
+            document.getElementById("p-username").value = data.username
+            document.getElementById("p-email").value = data.email
         }
       });
     const custom_id = localStorage.getItem("custom_id");
@@ -121,11 +123,15 @@ const loadUserDetails = () => {
         // console.log(data)
         if(data)
         {
-            document.getElementById("p-balance").innerText = `$${data.balance}`;
-            document.getElementById("p-phone").innerText = `${data.phone}`;
-            document.getElementById("p-address").innerText = `${data.address}`;
-            document.getElementById("p-img").src = `${data.image}`;
-            localStorage.setItem('user_type',data.user_type)
+          document.getElementById("p-phone").value = data.phone
+          document.getElementById("p-address").value = data.address
+          document.getElementById("p-phone").value = data.phone
+
+          document.getElementById("p-img").src = `${data.image}`;
+          
+          document.getElementById("p-balance").innerText = `$${data.balance}`;
+
+          localStorage.setItem('user_type',data.user_type)
             
         }
       });
@@ -197,6 +203,72 @@ const donation = (event) => {
       })
       
   };
+// const updateProfile = async (event) => {
+//     event.preventDefault(); // Prevent form submission
+    
+//     const token = localStorage.getItem('token');
+//     const imageFile = document.getElementById('image').files[0]; // Get the selected file
+//     let imageUrl = '';
+
+//     try {
+//         // If a new image is selected, upload it to ImgBB
+//         if (imageFile) {
+//             const formData = new FormData();
+//             formData.append('image', imageFile);
+
+//             const uploadResponse = await fetch('https://api.imgbb.com/1/upload?key=YOUR_IMGBB_API_KEY', {
+//                 method: 'POST',
+//                 body: formData,
+//             });
+
+//             const uploadData = await uploadResponse.json();
+//             if (uploadData.success) {
+//                 imageUrl = uploadData.data.url; // Get the uploaded image URL
+//             } else {
+//                 throw new Error('Image upload failed');
+//             }
+//         } else {
+//             // If no new image is selected, retain the current image URL
+//             imageUrl = document.getElementById('current-image-url').value; // Assuming a hidden input for the current URL
+//         }
+
+//         // Prepare user data for updating
+//         const userData = {
+//             user: {
+//                 username: document.getElementById('username').value,
+//                 first_name: document.getElementById('first_name').value,
+//                 last_name: document.getElementById('last_name').value,
+//                 email: document.getElementById('email').value
+//             },
+//             custom_user: {
+//                 image: imageUrl, // Use the uploaded image URL
+//                 balance: document.getElementById('balance').value,
+//                 phone: document.getElementById('phone').value,
+//                 address: document.getElementById('address').value,
+//                 user_type: document.getElementById('user_type').value
+//             }
+//         };
+
+//         // Update the user profile
+//         const updateResponse = await fetch('https://your-api-domain.com/profile/update/', {
+//             method: 'PUT',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': `Token ${token}`
+//             },
+//             body: JSON.stringify(userData)
+//         });
+
+//         const updateData = await updateResponse.json();
+//         console.log('Profile updated:', updateData);
+//         // Handle success - perhaps redirect or display success message
+
+//     } catch (error) {
+//         console.error('Error updating profile:', error);
+//     }
+// };
+
+
 document.addEventListener('DOMContentLoaded', function () {
   const element = document.getElementById('donation-form');
   if (element) {
@@ -207,8 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
   loadCustomId()
   loadUserDetails()
 });
-// loadCustomId()
-// loadUserDetails()
+
 
 // const handleReview = async (event) =>{
 //     event.preventDefault()
