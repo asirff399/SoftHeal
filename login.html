@@ -18,12 +18,12 @@
             </div>
             <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
                 <div class="text-center mb-10">
-                    <h1 class="font-bold text-3xl text-gray-900">Login</h1>
+                    <h1 class="font-bold text-3xl text-gray-900 mb-3">Login</h1>
                     <p>Enter your information to login</p>
                 </div>
                 <form >                   
                     <!-- Errors -->
-                    <div id="error-container" class="bg-gray-200 mb-5 mt-5 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)] text-gray-800 flex items-center w-max max-w-sm p-4 rounded-md hidden" role="alert">
+                    <div id="error-container" class="bg-gray-200 mb-5 mt-2 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)] text-gray-800 flex items-center w-max max-w-sm p-4 rounded-md hidden" role="alert">
                         <span id="error" class="text-sm font-semibold tracking-wide"></span>
                     </div>
                     <!-- Errors -->
@@ -58,6 +58,9 @@
   <!-- Footer -->
   <div id="footer" class="w-full"></div>
   <!-- Scripts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  
   <script src="./base.js"></script>
   <script src="./auth.js"></script>
  

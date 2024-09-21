@@ -78,6 +78,7 @@ const handleLogin = (event) =>{
                 window.location.href = "index.html"
             }
         })
+        .catch((err) => alert(err))
         
     }
 }
@@ -125,9 +126,9 @@ const loadUserDetails = () => {
         {
           document.getElementById("p-phone").value = data.phone
           document.getElementById("p-address").value = data.address
-          document.getElementById("p-phone").value = data.phone
 
-          document.getElementById("p-img").src = `${data.image}`;
+          document.getElementById("img").src = `${data.image}`;
+          document.getElementById("curr-p-img").value = data.image;
           
           document.getElementById("p-balance").innerText = `$${data.balance}`;
 
@@ -200,75 +201,92 @@ const donation = (event) => {
         console.log(data);
         alert("Donated successfully!");
         window.location.href = "./profile.html";
-      })
-      
+      })    
+};
+const updateProfile = async (event) =>{
+    event.preventDefault()
+    const token = localStorage.getItem("token")
+
+    const imageFile = document.getElementById('p-img').files[0]
+
+    const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
+    const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+
+    const imageData = new FormData()
+    imageData.append('image',imageFile)
+    let imageUrl = ''
+    try{
+        if(imageFile){
+          const imgbbResponse = await fetch(imgbbUrl,{
+            method:'POST',
+            body: imageData,
+          })
+          const imgbbData = await imgbbResponse.json()
+          imageUrl = imgbbData.data.url;
+
+        }else{
+          imageUrl = document.getElementById('curr-p-img').value;
+        }
+        const userData = {
+          user: {
+              username: document.getElementById('p-username').value,
+              first_name: document.getElementById('p-first_name').value,
+              last_name: document.getElementById('p-last_name').value,
+              email: document.getElementById('p-email').value
+          },
+          custom_user: {
+              image: imageUrl, 
+              phone: document.getElementById('p-phone').value,
+              address: document.getElementById('p-address').value,
+          }
+        }
+        const updateResponse = await fetch("https://softheal-api-drf.onrender.com/account/profile/update/",{
+          method:"PUT",
+          headers:{
+            "content-type":"application/json",
+            "Authorization":`Token ${token}`,
+          },
+          body:JSON.stringify(userData),
+        })
+        const updateData = await updateResponse.json()
+        if (updateResponse.ok) {
+          console.log('Profile Updated:', updateData);
+          alert('Profile updated successfully!');
+        } else {
+            throw new Error(updateData.detail || 'Failed to update profile'); 
+        }
+        console.log('Profile Updated:',updateData)
+    }catch(error){
+      console.error('Error updating profile:',error)
+    }
+}
+const changePass = (event) => {
+  event.preventDefault();
+
+  const oldPassword = document.getElementById("old_password").value;
+  const newPassword = document.getElementById("new_password").value;
+  const token = localStorage.getItem("token");
+  // console.log(token);
+  const data = {
+    old_password: oldPassword,
+    new_password: newPassword,
   };
-// const updateProfile = async (event) => {
-//     event.preventDefault(); // Prevent form submission
-    
-//     const token = localStorage.getItem('token');
-//     const imageFile = document.getElementById('image').files[0]; // Get the selected file
-//     let imageUrl = '';
+  // console.log(data);
 
-//     try {
-//         // If a new image is selected, upload it to ImgBB
-//         if (imageFile) {
-//             const formData = new FormData();
-//             formData.append('image', imageFile);
-
-//             const uploadResponse = await fetch('https://api.imgbb.com/1/upload?key=YOUR_IMGBB_API_KEY', {
-//                 method: 'POST',
-//                 body: formData,
-//             });
-
-//             const uploadData = await uploadResponse.json();
-//             if (uploadData.success) {
-//                 imageUrl = uploadData.data.url; // Get the uploaded image URL
-//             } else {
-//                 throw new Error('Image upload failed');
-//             }
-//         } else {
-//             // If no new image is selected, retain the current image URL
-//             imageUrl = document.getElementById('current-image-url').value; // Assuming a hidden input for the current URL
-//         }
-
-//         // Prepare user data for updating
-//         const userData = {
-//             user: {
-//                 username: document.getElementById('username').value,
-//                 first_name: document.getElementById('first_name').value,
-//                 last_name: document.getElementById('last_name').value,
-//                 email: document.getElementById('email').value
-//             },
-//             custom_user: {
-//                 image: imageUrl, // Use the uploaded image URL
-//                 balance: document.getElementById('balance').value,
-//                 phone: document.getElementById('phone').value,
-//                 address: document.getElementById('address').value,
-//                 user_type: document.getElementById('user_type').value
-//             }
-//         };
-
-//         // Update the user profile
-//         const updateResponse = await fetch('https://your-api-domain.com/profile/update/', {
-//             method: 'PUT',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Token ${token}`
-//             },
-//             body: JSON.stringify(userData)
-//         });
-
-//         const updateData = await updateResponse.json();
-//         console.log('Profile updated:', updateData);
-//         // Handle success - perhaps redirect or display success message
-
-//     } catch (error) {
-//         console.error('Error updating profile:', error);
-//     }
-// };
-
-
+  fetch("https://softheal-api-drf.onrender.com/account/profile/pass_change/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Token ${token}`,
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      window.location.href = "./profile.html"
+      alert("Password Changed successfully!")
+    });
+};
 document.addEventListener('DOMContentLoaded', function () {
   const element = document.getElementById('donation-form');
   if (element) {
