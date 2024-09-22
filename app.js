@@ -70,10 +70,10 @@ const displayAllPost = (posts) => {
         div.classList.add("all-post-card")
         const formattedDate = formatDate(post.created_on);
         div.innerHTML = `
-                <div class="bg-white rounded overflow-hidden" style="width: 360px;">
+                <div class="bg-white rounded overflow-hidden transition-transform ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300" style="width: 400px;">
                     <img class="h-48 w-full object-cover object-center" src=${post.image} alt="Product Image" />
                     <div class="p-6">
-                        <h1><strong class="mb-2 text-xl text-black font-mono font-bold">${post.name}</strong> </h1>
+                        <h1><strong class="mb-2 text-xl text-black font-mono font-bold">${post.name.slice(0,30)}</strong> </h1>
                         <p class="text-red-800 text-[13px] font-bold italic my-2">${formattedDate}</p>
                         <div class="flex justify-between mt-5">
                             <button class="bg-orange-500 text-white font-semibold py-2 px-4 rounded"><a href="./post_details.html?post_id=${post.id}">Donate Now <i class="fa-solid fa-arrow-right-long"></i></a></button>
@@ -115,7 +115,7 @@ const displayInitialPost = (posts) => {
         div.classList.add("post-card")
         const formattedDate = formatDate(post.created_on);
         div.innerHTML = `
-                <div class="bg-white rounded overflow-hidden" >
+                <div class="bg-white rounded overflow-hidden transition-transform ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300" >
                     <img class="h-48 w-full object-cover object-center" src=${post.image} alt="Product Image" />
                     <div class="p-6">
                         <h1 ><strong class="mb-2 text-xl text-black font-mono font-bold">${post.name}</strong> </h1>
@@ -284,7 +284,7 @@ const loadAllPostType = () => {
                     const div = document.createElement("div")
                     div.classList.add("post-ty")
                     div.innerHTML = `               
-                    <li onclick="loadPostCategoryWise('${type.name}')"  class="tab text-gray-600 font-semibold text-[15px] py-2.5 px-5 border-b-2 border-transparent cursor-pointer">
+                    <li onclick="loadPostCategoryWise('${type.name}')"  class="tab text-gray-600 font-semibold text-[15px] py-2.5 px-5 cursor-pointer transition-transform rounded-2xl hover:bg-gray-100 ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300">
                         ${type.name}
                     </li>          
                 `
@@ -320,6 +320,4 @@ loadAllPostType()
 postDetails()
 loadAllPost()
 loadPostCategoryWise()
-    /* <button type="button" onclick="loadPetCategoryWise('${type.name}')"
-                        class="category-btn font-mono font-bold">${type.name}
-                    </button>   */
+    

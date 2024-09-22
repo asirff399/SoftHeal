@@ -19,7 +19,7 @@
             <a href="#" data-modal-target="deposit" data-modal-toggle="deposit" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">Deposit</a>
             <a href="#" data-modal-target="pass-change-modal" data-modal-toggle="pass-change-modal" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">Change Password</a>
             <a href="./volunteer.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">Volunteer</a>
-            <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">Donation History</a>
+            <a href="./donationHistory.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">Donation History</a>
             <a type="button" href="#" onclick="handleLogout()"  class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">Logout</a>
         </nav>
     </div>
@@ -110,8 +110,41 @@
               </div>
 
           </div>
-      </form>
-    </div>
+        </form>
+
+        <!-- Donation History -->
+          <div class="font-mono overflow-x-auto w-5/6 mx-auto my-11 shadow-2xl rounded-lg">
+            <table class="min-w-full bg-teal-200">
+              <thead class="bg-gray-800 whitespace-nowrap">
+                <tr>
+                  <th class="p-4 text-left text-sm font-medium text-white">
+                    ID
+                  </th>
+                  <th class="p-4 text-left text-sm font-medium text-white">
+                    Post Title
+                  </th>
+                  <th class="p-4 text-left text-sm font-medium text-white">
+                    Post ID
+                  </th>
+                  <th class="p-4 text-left text-sm font-medium text-white">
+                    Time
+                  </th>
+                  <th class="p-4 text-left text-sm font-medium text-white">
+                    Donated Amount
+                  </th>
+                  <th class="p-4 text-left text-sm font-medium text-white">
+                    Update Balance 
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="whitespace-nowrap" id="tb">
+                
+
+              </tbody>
+            </table>
+          </div>
+      </div>
 
   </div>
 
@@ -181,38 +214,7 @@
         </div>
     </div>
   </div> 
-  <!-- Donation History -->
-  <!-- <div class="font-mono overflow-x-auto w-5/6 mx-auto my-11 shadow-2xl rounded-lg">
-    <table class="min-w-full bg-teal-200">
-      <thead class="bg-gray-800 whitespace-nowrap">
-        <tr>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            ID
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Pet 
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Pet ID
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Time
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Pet Fee
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Update Balance 
-          </th>
-        </tr>
-      </thead>
-
-      <tbody class="whitespace-nowrap" id="tb">
-        
-
-      </tbody>
-    </table>
-  </div> -->
+  
 
    <!-- Footer -->
    <div id="footer" class="w-full"></div>
@@ -221,6 +223,7 @@
    <script src="./base.js"></script>
    <script src="./app.js"></script>
    <script src="./auth.js"></script>
+   <script src="./post.js"></script>
    
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

@@ -1,6 +1,18 @@
 const handelRegistration = (event) => {
     event.preventDefault();
-   
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
     const username = getValue("username");
     const first_name = getValue("first_name");
     const last_name = getValue("last_name");
@@ -36,18 +48,20 @@ const handelRegistration = (event) => {
             })
             .then((data) => {
                 console.log(data);
-                alert("Registration successful");
-                document.getElementById("error").innerText = "Check Your Confirmation Mail!";
+                // showError("Check your confirmation email!");
+                // alert("Registration successful");
+                alert("Check your confirmation email!");
+                showError("Registration successfull!");
             })
             .catch((error) => {
                 console.error(error);
-                alert("Failed to register!");
+                showError("Registration failed. Please try again.");
             });               
         } else {
-            document.getElementById("error").innerText = "Password must contain eight characters, at least one letter, one number, and one special character."; 
+          showError("Password must contain eight characters, at least one letter, one number, and one special character.");
         }
     } else {
-        document.getElementById("error").innerText = "Password and confirm password don't match";
+      showError("Password and confirm password don't match.");
     }
     
 };
@@ -57,6 +71,14 @@ const getValue=(id)=>{
 }
 const handleLogin = (event) =>{
     event.preventDefault()
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+
     const username = getValue("login-username")
     const password = getValue("login-password")
     console.log(username,password)
@@ -69,17 +91,33 @@ const handleLogin = (event) =>{
         .then((res)=>res.json())
         .then((data)=>{
             console.log(data)
-            document.getElementById("error").innerText = data.error;
-            alert("Logged in Seccessfully !")
-             
-            if(data.token && data.user_id){
-                localStorage.setItem("token",data.token)
-                localStorage.setItem("user_id",data.user_id)
-                window.location.href = "index.html"
-            }
+            if (data.error) {
+                errorElement.innerText = data.error;
+                errorContainer.classList.remove("hidden");  
+                hideToast();
+            } 
+              if (data.token && data.user_id) {
+                  errorElement.innerText = "Logged in Successfully!"
+                  errorContainer.classList.remove("hidden"); 
+                  hideToast();
+
+                  localStorage.setItem("token", data.token);
+                  localStorage.setItem("user_id", data.user_id);
+                  window.location.href = "./index.html";
+              }
         })
-        .catch((err) => alert(err))
+        .catch((err) => {
+          errorElement.innerText = "An error occurred. Please try again later.";
+          errorContainer.classList.remove("hidden"); 
+          console.error("Error during login:", err);
+          hideToast();
+      });
         
+    }else{
+      errorElement.innerText = "Please provide both username and password.";
+      errorContainer.classList.remove("hidden");
+      errorContainer.classList.add("text-red-900");
+      hideToast();
     }
 }
 const handleLogout = () =>{
