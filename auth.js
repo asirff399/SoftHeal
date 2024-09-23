@@ -48,8 +48,6 @@ const handelRegistration = (event) => {
             })
             .then((data) => {
                 console.log(data);
-                // showError("Check your confirmation email!");
-                // alert("Registration successful");
                 alert("Check your confirmation email!");
                 showError("Registration successfull!");
             })
@@ -121,6 +119,18 @@ const handleLogin = (event) =>{
     }
 }
 const handleLogout = () =>{
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
     const token = localStorage.getItem("token")
     fetch("https://softheal-api-drf.onrender.com/account/logout/",{
         method:"POST",
@@ -134,6 +144,7 @@ const handleLogout = () =>{
         console.log(data)
         localStorage.removeItem("token")
         localStorage.removeItem("user_id")
+        showError('Logged out successfully')
         window.location.href = "./index.html"
     })
 
@@ -148,7 +159,6 @@ const loadUserDetails = () => {
         // console.log(data)
         if(data)
         {
-            // document.getElementById("p-name").innerText = `${data.first_name} ${data.last_name}`;
             document.getElementById("p-first_name").value = data.first_name 
             document.getElementById("p-last_name").value = data.last_name 
             document.getElementById("p-username").value = data.username
@@ -209,7 +219,7 @@ const deposit = (event) => {
         window.location.href = "./profile.html";
       })
       
-  };
+};
 document.addEventListener('DOMContentLoaded', function () {
   const element = document.getElementById('deposit-form');
   if (element) {
@@ -243,6 +253,20 @@ const donation = (event) => {
 };
 const updateProfile = async (event) =>{
     event.preventDefault()
+
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
     const token = localStorage.getItem("token")
 
     const imageFile = document.getElementById('p-img').files[0]
@@ -289,13 +313,14 @@ const updateProfile = async (event) =>{
         const updateData = await updateResponse.json()
         if (updateResponse.ok) {
           console.log('Profile Updated:', updateData);
-          alert('Profile updated successfully!');
+          showError('Profile updated successfully!')
         } else {
             throw new Error(updateData.detail || 'Failed to update profile'); 
         }
         console.log('Profile Updated:',updateData)
     }catch(error){
       console.error('Error updating profile:',error)
+      showError('Error updating profile:',error)
     }
 }
 const changePass = (event) => {

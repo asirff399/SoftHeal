@@ -9,6 +9,19 @@ function formatDate(dateStr) {
 const contactUs = (event) => {
     event.preventDefault();
 
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
     const form = document.getElementById("contact-us");
     const formData = new FormData(form);
     const postData = {
@@ -32,12 +45,12 @@ const contactUs = (event) => {
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            alert("Message sent successfully!");
+            showError("Contact message sent successfully!")
             window.location.href = "./index.html";
         })
         .catch((error) => {
             console.error("Error:", error);
-            alert("There was a problem sending your message.");
+            showError("There was a problem sending your contact message.")
         });
 };
 const loadAllPost = () =>{
@@ -187,6 +200,19 @@ const loadAllService = () =>{
 const addVolunteer = async (event) =>{
     event.preventDefault()
 
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
     const form = document.getElementById("volunteer")
     const formData = new FormData(form)
     const token = localStorage.getItem("token")
@@ -229,14 +255,17 @@ const addVolunteer = async (event) =>{
         })
         const data = await response.json();
         if (response.ok) {
-            alert("Register request send successfully");
+            // alert("Register request send successfully");
+            showError("Register request send successfully")
             window.location.href = "./index.html"
         } else {
             alert("Failed to add post: " + data.message);
+            showError("Failed to add post: " + data.message)
         }
     } catch (error) {
             console.error("Error:", error);
-            alert("An error occurred while adding the post");
+            // alert("An error occurred while adding the post");
+            showError("An error occurred while adding the post")
         }
 };
 function formatDate2(dateStr) {
