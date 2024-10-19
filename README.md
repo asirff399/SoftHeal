@@ -27,4 +27,7 @@ JavaScript, HTML, Tailwind CSS, etc.
 🌐 Deployment: Deployed using Netlify.
 
 GitHub!
-Backend: https://github.com/asirff399/SoftHeal-DRF
+Backend code: https://github.com/asirff399/SoftHeal-DRF
+API live link: https://soft-heal.vercel.app/
+
+Frontend live link: https://softheal.netlify.app
