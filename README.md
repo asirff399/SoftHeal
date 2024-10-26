@@ -1,35 +1,90 @@
-This is my Django project, built using Django Rest Framework (DRF). The project is a Donation Platform that provides users with various features to explore and donate where they want. Key functionalities included: 
+# SoftHeal - Donation Site 
 
-💫 Authentication: New users can register on the platform using their email. An activation link is sent to their email to verify and activate their account, ensuring a secure onboarding process.
+#### The project is a Donation Platform that provides users with various features to explore and donate where they want. Key functionalities included:
+---
+## Admin
 
-💫 Donation: Users can browse available projects for donation, view detailed post information, and donate through a simple and intuitive process.
+- Admin can log in and log out.
+- Admin can manage the dashboard.
+- Admin can manage profile.
+- Admin can add, edit, and delete any post.
 
-💫 Post Filtering: User can easily filter posts by categories to smooth their search for specific posts.
+## User
 
-💫 Profile Management: Each user has a personal profile page where they can:
+- Users can register, log in, and log out.
+- Users can donate.
+- User can review the post he/she donated.
+- User can filter post category-wise.
 
-    ⚡ View their account information and balance 
+## Features
+
+### Authentication
+
+- New users can register on the platform using their email. An activation link is sent to their email to verify and activate their account, ensuring a secure onboarding process.
+
+### Donation
+
+- Users can browse available projects for donation, view detailed post information, and donate through a simple and intuitive process.
+
+### Post Filtering
+
+- User can easily filter posts by categories to smooth their search for specific posts.
+
+### Profile Management
+
+- Each user has a personal profile page where they can:
+
+     ⚡ View their account information and balance.
+  
+     ⚡ They can update info from here.
     
-    ⚡ View their donation history.
+     ⚡ View their donation history.
+
+### Donation History Dashboard
+
+- A dedicated section that displays the user's donation history, providing a clear overview of their activity on the platform.
+
+### Admin Controls
+
+- Administrators have full access to manage the platform. They can add, edit, and delete any posts, ensuring the smooth operation and integrity of the.
+
+### Volunteer
+
+-There was a volunteer register form. Where anyone can send a request to join us as a volunteer.
+
+## Pages
+
+- #### Home
+- #### Explore Pet
+- #### Pet Details
+- #### Pet Add
+- #### Pet Edit
+- #### Profile
+- #### Service Details
+- #### About Us
+- #### Contact Us
+- #### Admin Dashboard
 
 
-💫 Donation History Dashboard: A dedicated section that displays the user's donation history, providing a clear overview of their activity on the platform.
+## 💻 Technology: 
 
-💫 Admin Controls: Administrators have full access to manage the platform. They can add, edit, and delete any posts, ensuring the smooth operation and integrity of the.
+- HTML
+- Tailwind CSS
+- Javascript
+- etc.
 
-💫 Volunteer: There was a volunteer register form. Where anyone can send a request to join us as a volunteer.
- 
+---
 
-🧑‍💻 Technology: 
+## 🌐 Deployment: Deployed using Netlify.
+Live link: 
 
-JavaScript, HTML, Tailwind CSS, etc.
+    https://softheal.netlify.app
 
-🌐 Deployment: Deployed using Netlify.
+## GitHub!
+Backend: 
 
-GitHub!
+    https://github.com/asirff399/SoftHeal-DRF
 
-Backend code: https://github.com/asirff399/SoftHeal-DRF
+Backend live link:
 
-API live link: https://soft-heal.vercel.app/
-
-Frontend live link: https://softheal.netlify.app
+    https://soft-heal.vercel.app/
