@@ -194,38 +194,38 @@ const loadCustomId = () => {
         localStorage.setItem("custom_id", data[0].id)   
     })
 };
-const deposit = (event) => {
-    event.preventDefault();
-    const form = document.getElementById("deposit-form");
-    const formData = new FormData(form);
-    const data = {
-      amount: formData.get("deposit"),
-    };
+// const deposit = (event) => {
+//     event.preventDefault();
+//     const form = document.getElementById("deposit-form");
+//     const formData = new FormData(form);
+//     const data = {
+//       amount: formData.get("deposit"),
+//     };
   
-    // console.log(data);
-    const token = localStorage.getItem("token");
-    fetch("https://soft-heal.vercel.app/transaction/deposit/", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${token}`,
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        alert("Deposit successfully done!");
-        window.location.href = "./profile.html";
-      })
+//     // console.log(data);
+//     const token = localStorage.getItem("token");
+//     fetch("https://soft-heal.vercel.app/transaction/deposit/", {
+//       method: "PUT",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Token ${token}`,
+//       },
+//       body: JSON.stringify(data),
+//     })
+//       .then((res) => res.json())
+//       .then((data) => {
+//         console.log(data);
+//         alert("Deposit successfully done!");
+//         window.location.href = "./profile.html";
+//       })
       
-};
-document.addEventListener('DOMContentLoaded', function () {
-  const element = document.getElementById('deposit-form');
-  if (element) {
-    element.addEventListener("submit", deposit);
-  }
-});
+// };
+// document.addEventListener('DOMContentLoaded', function () {
+//   const element = document.getElementById('deposit-form');
+//   if (element) {
+//     element.addEventListener("submit", deposit);
+//   }
+// });
 // const donation = (event) => {
 //     event.preventDefault();
 //     const form = document.getElementById("donation-form");

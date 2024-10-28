@@ -207,61 +207,61 @@ function formatDate(dateStr) {
     };
     return date.toLocaleString('en-US', options).replace(" at", "");
 }
-const loadDashboard = () =>{
-    const user_id = localStorage.getItem("user_id")
-    fetch(`https://soft-heal.vercel.app/post/donation/?search=${user_id}`)
-    .then((res)=>res.json())
-    .then((data)=>{
-        // console.log(data)
-        document.getElementById("loader").style.display = "block";
-        if(data.length > 0){
+// const loadDashboard = () =>{
+//     const user_id = localStorage.getItem("user_id")
+//     fetch(`https://soft-heal.vercel.app/post/donation/?search=${user_id}`)
+//     .then((res)=>res.json())
+//     .then((data)=>{
+//         // console.log(data)
+//         document.getElementById("loader").style.display = "block";
+//         if(data.length > 0){
             
-            document.getElementById("loader").style.display = "none";
-            displayDashboard(data)
-        }
-        else{
-            document.getElementById("nodata").style.display = "block";
-            document.getElementById("loader").style.display = "none";
-        }
-    })
-}
-const displayDashboard = (data) =>{
-    data.forEach((item)=>{           
-        const parent = document.getElementById("tb")
-        const tr = document.createElement("tr")
-        const formattedTime = formatDate(item.donated_on)
-        tr.innerHTML=`
+//             document.getElementById("loader").style.display = "none";
+//             displayDashboard(data)
+//         }
+//         else{
+//             document.getElementById("nodata").style.display = "block";
+//             document.getElementById("loader").style.display = "none";
+//         }
+//     })
+// }
+// const displayDashboard = (data) =>{
+//     data.forEach((item)=>{           
+//         const parent = document.getElementById("tb")
+//         const tr = document.createElement("tr")
+//         const formattedTime = formatDate(item.donated_on)
+//         tr.innerHTML=`
                 
-                    <td  class="p-4 text-sm text-black">
-                        ${item.id}
-                    </td>
-                    <td  class="p-4 text-sm text-black">
-                        ${item.post_name}
-                    </td>
-                    <td  class="p-4 text-sm text-black">
-                        ${item.post}
-                    </td>
-                    <td  class="p-4 text-sm text-black">
-                        ${formattedTime}
-                    </td>
-                    <td  class="p-4 text-sm text-black">
-                        ${item.amount}
-                    </td>
-                    <td  class="p-4 text-sm text-black">
-                        ${item.balance_after_donation}
-                    </td>
+//                     <td  class="p-4 text-sm text-black">
+//                         ${item.id}
+//                     </td>
+//                     <td  class="p-4 text-sm text-black">
+//                         ${item.post_name}
+//                     </td>
+//                     <td  class="p-4 text-sm text-black">
+//                         ${item.post}
+//                     </td>
+//                     <td  class="p-4 text-sm text-black">
+//                         ${formattedTime}
+//                     </td>
+//                     <td  class="p-4 text-sm text-black">
+//                         ${item.amount}
+//                     </td>
+//                     <td  class="p-4 text-sm text-black">
+//                         ${item.balance_after_donation}
+//                     </td>
         
         
-        `
-        parent.appendChild(tr)
+//         `
+//         parent.appendChild(tr)
         
         
-    })
-}
+//     })
+// }
 document.addEventListener("DOMContentLoaded", () => {
     getPostDetail()
     loadPostTypeForPost()
     loadPostTypeForEdit()
-    loadDashboard()
+    // loadDashboard()
 });
 

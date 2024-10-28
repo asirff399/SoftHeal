@@ -27,7 +27,6 @@ async function payment(event) {
         const responseData = await response.json();
         
         if (response.ok && responseData.gateway_url) {
-            // Redirect to payment gateway URL
             window.location.href = responseData.gateway_url;
         } else {
             console.error(responseData.error || "Payment initiation failed.");
