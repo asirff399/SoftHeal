@@ -1,5 +1,5 @@
 const loadPostTypeForPost = () => {
-    fetch("https://softheal-api-drf.onrender.com/post/types/")
+    fetch("https://soft-heal.vercel.app/post/types/")
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)
@@ -16,7 +16,7 @@ const loadPostTypeForPost = () => {
         })
 }
 const loadPostTypeForEdit = () => {
-    fetch("https://softheal-api-drf.onrender.com/post/types/")
+    fetch("https://soft-heal.vercel.app/post/types/")
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)
@@ -80,7 +80,7 @@ const addPost = async (event) =>{
         }
         console.log(postData)
 
-        const response = await fetch("https://softheal-api-drf.onrender.com/post/add/",{
+        const response = await fetch("https://soft-heal.vercel.app/post/add/",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
@@ -105,7 +105,7 @@ const addPost = async (event) =>{
 };
 const getPostDetail = () => {
     const post_id = localStorage.getItem("post_id")
-    fetch(`https://softheal-api-drf.onrender.com/post/list/${post_id}`)
+    fetch(`https://soft-heal.vercel.app/post/list/${post_id}`)
       .then((res) => res.json())
       .then((post) => {
         document.getElementById("ed-name").value = post.name;
@@ -161,7 +161,7 @@ const editPost = async (event)=>{
         }
         console.log(editPostData)
         
-        const response = await fetch(`https://softheal-api-drf.onrender.com/post/details/${post_id}/`,{
+        const response = await fetch(`https://soft-heal.vercel.app/post/details/${post_id}/`,{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",
@@ -189,7 +189,7 @@ const editPost = async (event)=>{
 const deletePost = (postID) =>{
     const token = localStorage.getItem("token")
     console.log(postID)
-    fetch(`https://softheal-api-drf.onrender.com/post/details/${postID}/`,{
+    fetch(`https://soft-heal.vercel.app/post/details/${postID}/`,{
         method:"DELETE",
         headers:{
             "Content-Type": "application/json",
@@ -209,19 +209,19 @@ function formatDate(dateStr) {
 }
 const loadDashboard = () =>{
     const user_id = localStorage.getItem("user_id")
-    fetch(`https://softheal-api-drf.onrender.com/post/donation/?search=${user_id}`)
+    fetch(`https://soft-heal.vercel.app/post/donation/?search=${user_id}`)
     .then((res)=>res.json())
     .then((data)=>{
-        console.log(data)
-        // document.getElementById("loader").style.display = "block";
+        // console.log(data)
+        document.getElementById("loader").style.display = "block";
         if(data.length > 0){
             
-            // document.getElementById("loader").style.display = "none";
+            document.getElementById("loader").style.display = "none";
             displayDashboard(data)
         }
         else{
-            // document.getElementById("nodata").style.display = "block";
-            // document.getElementById("loader").style.display = "none";
+            document.getElementById("nodata").style.display = "block";
+            document.getElementById("loader").style.display = "none";
         }
     })
 }

@@ -47,8 +47,7 @@ fetch("footer.html")
 .then((data) => {
     document.getElementById("footer").innerHTML= data;
 })
-
-
+ 
 document.addEventListener('DOMContentLoaded', function () {
     let tabs = document.querySelectorAll('.tab');
     let contents = document.querySelectorAll('.tab-content');

@@ -35,7 +35,7 @@ const handelRegistration = (event) => {
         
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {          
             
-            fetch("https://softheal-api-drf.onrender.com/account/register/",{
+            fetch("https://soft-heal.vercel.app/account/register/",{
                 method:"POST",
                 headers:{"Content-Type":"application/json",},
                 body:JSON.stringify(info)
@@ -81,7 +81,7 @@ const handleLogin = (event) =>{
     const password = getValue("login-password")
     console.log(username,password)
     if(username,password){
-        fetch("https://softheal-api-drf.onrender.com/account/login/",{
+        fetch("https://soft-heal.vercel.app/account/login/",{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({username,password}),
@@ -132,7 +132,7 @@ const handleLogout = () =>{
       hideToast(); 
     };
     const token = localStorage.getItem("token")
-    fetch("https://softheal-api-drf.onrender.com/account/logout/",{
+    fetch("https://soft-heal.vercel.app/account/logout/",{
         method:"POST",
         headers:{
             Authorization:`Token ${token}`,
@@ -152,7 +152,7 @@ const handleLogout = () =>{
 const loadUserDetails = () => {
     const user_id = localStorage.getItem("user_id");
   
-    fetch(`https://softheal-api-drf.onrender.com/users/${user_id}`)
+    fetch(`https://soft-heal.vercel.app/users/${user_id}`)
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("username", data.username);
@@ -166,7 +166,7 @@ const loadUserDetails = () => {
         }
       });
     const custom_id = localStorage.getItem("custom_id");
-    fetch(`https://softheal-api-drf.onrender.com/account/list/${custom_id}`)
+    fetch(`https://soft-heal.vercel.app/account/list/${custom_id}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data)
@@ -184,10 +184,10 @@ const loadUserDetails = () => {
             
         }
       });
-  };
+};
 const loadCustomId = () => {
     const user_id = localStorage.getItem("user_id");
-    fetch(`https://softheal-api-drf.onrender.com/account/list/?search=${user_id}`)
+    fetch(`https://soft-heal.vercel.app/account/list/?search=${user_id}`)
       .then((res) => res.json())
       .then((data) =>{
         // console.log(data)
@@ -204,7 +204,7 @@ const deposit = (event) => {
   
     // console.log(data);
     const token = localStorage.getItem("token");
-    fetch("https://softheal-api-drf.onrender.com/transaction/deposit/", {
+    fetch("https://soft-heal.vercel.app/transaction/deposit/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -226,31 +226,32 @@ document.addEventListener('DOMContentLoaded', function () {
     element.addEventListener("submit", deposit);
   }
 });
-const donation = (event) => {
-    event.preventDefault();
-    const form = document.getElementById("donation-form");
-    const formData = new FormData(form);
-    const data = {
-      amount: formData.get("donation-amount"),
-    };
-    const token = localStorage.getItem("token");
-    const post_id = localStorage.getItem("post_id");
+// const donation = (event) => {
+//     event.preventDefault();
+//     const form = document.getElementById("donation-form");
+//     const formData = new FormData(form);
+//     const data = {
+//       amount: formData.get("donation-amount"),
+//     };
+//     const token = localStorage.getItem("token");
+//     const post_id = localStorage.getItem("post_id");
 
-    fetch(`https://softheal-api-drf.onrender.com/post/donate/${post_id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${token}`,
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        alert("Donated successfully!");
-        window.location.href = "./profile.html";
-      })    
-};
+//     fetch(`https://soft-heal.vercel.app/post/donate/${post_id}`, {
+//       method: "PUT",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Token ${token}`,
+//       },
+//       body: JSON.stringify(data),
+//     })
+//       .then((res) => res.json())
+//       .then((data) => {
+//         console.log(data);
+//         alert("Donated successfully!");
+//         window.location.href = "./profile.html";
+//       })    
+// };
+
 const updateProfile = async (event) =>{
     event.preventDefault()
 
@@ -302,7 +303,7 @@ const updateProfile = async (event) =>{
               address: document.getElementById('p-address').value,
           }
         }
-        const updateResponse = await fetch("https://softheal-api-drf.onrender.com/account/profile/update/",{
+        const updateResponse = await fetch("https://soft-heal.vercel.app/account/profile/update/",{
           method:"PUT",
           headers:{
             "content-type":"application/json",
@@ -336,7 +337,7 @@ const changePass = (event) => {
   };
   // console.log(data);
 
-  fetch("https://softheal-api-drf.onrender.com/account/profile/pass_change/", {
+  fetch("https://soft-heal.vercel.app/account/profile/pass_change/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -350,12 +351,12 @@ const changePass = (event) => {
       alert("Password Changed successfully!")
     });
 };
-document.addEventListener('DOMContentLoaded', function () {
-  const element = document.getElementById('donation-form');
-  if (element) {
-    element.addEventListener("submit", donation);
-  }
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//   const element = document.getElementById('donation-form');
+//   if (element) {
+//     element.addEventListener("submit", donation);
+//   }
+// });
 document.addEventListener('DOMContentLoaded', function() {
   loadCustomId()
   loadUserDetails()

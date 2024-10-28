@@ -33,7 +33,7 @@ const contactUs = (event) => {
     console.log(postData);
     const token = localStorage.getItem("token")
         // console.log(token)
-    fetch("https://softheal-api-drf.onrender.com/contact_us/", {
+    fetch("https://soft-heal.vercel.app/contact_us/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const contactUs = (event) => {
 };
 const loadAllPost = () =>{
     // document.getElementById("loader").style.display = "block";
-    fetch("https://softheal-api-drf.onrender.com/post/list/")
+    fetch("https://soft-heal.vercel.app/post/list/")
     .then((res)=>res.json())
     .then((data)=>{
         if(data.length > 0){
@@ -101,7 +101,7 @@ const displayAllPost = (posts) => {
 }
 const loadInitialPost = () => {
     // document.getElementById("loader").style.display = "block";
-    fetch("https://softheal-api-drf.onrender.com/post/list/")
+    fetch("https://soft-heal.vercel.app/post/list/")
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)
@@ -145,7 +145,7 @@ const displayInitialPost = (posts) => {
     })
 }
 const loadTeam = () =>{
-    fetch("https://softheal-api-drf.onrender.com/team/")
+    fetch("https://soft-heal.vercel.app/team/")
     .then((res) => res.json())
     .then((data) => {
         // console.log(data)
@@ -172,7 +172,7 @@ const loadTeam = () =>{
     }) 
 }
 const loadAllService = () =>{
-    fetch("https://softheal-api-drf.onrender.com/service/")
+    fetch("https://soft-heal.vercel.app/service/")
     .then((res) => res.json())
     .then((data) => {
         // console.log(data)
@@ -245,7 +245,7 @@ const addVolunteer = async (event) =>{
         }
         console.log(postData)
 
-        const response = await fetch("https://softheal-api-drf.onrender.com/volunteer/",{
+        const response = await fetch("https://soft-heal.vercel.app/volunteer/",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
@@ -284,12 +284,12 @@ const postDetails = ()=>{
     const param = new URLSearchParams(window.location.search).get("post_id")
     localStorage.setItem("post_id",param)
     if(param){
-        fetch(`https://softheal-api-drf.onrender.com/post/list/${param}`)
+        fetch(`https://soft-heal.vercel.app/post/list/${param}`)
         .then((res)=>res.json())
         .then((data)=> {
             // console.log(data)
             const formattedDate2 = formatDate2(data.created_on);
-
+            
             document.getElementById("pd-image").src = data.image
             document.getElementById("pd-name").innerText = data.name
             document.getElementById("pd-description").innerText = data.description
@@ -297,13 +297,11 @@ const postDetails = ()=>{
             document.getElementById("pd-collected").innerText =`$${data.collected}`
             document.getElementById("pd-type").innerText =`${data.post_type}`
             document.getElementById("pd-created-on").innerText = formattedDate2
-
         })
-    }
-    
+    }  
 }
 const loadAllPostType = () => {
-    fetch("https://softheal-api-drf.onrender.com/post/types/")
+    fetch("https://soft-heal.vercel.app/post/types/")
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)
@@ -313,7 +311,7 @@ const loadAllPostType = () => {
                     const div = document.createElement("div")
                     div.classList.add("post-ty")
                     div.innerHTML = `               
-                    <li onclick="loadPostCategoryWise('${type.name}')"  class="tab text-gray-600 font-semibold text-[15px] py-2.5 px-5 cursor-pointer transition-transform rounded-2xl hover:bg-gray-100 ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300">
+                    <li onclick="loadPostCategoryWise('${type.name}')"  class="tab text-gray-600 text-nowrap font-semibold text-[15px] py-2.5 px-5 cursor-pointer transition-transform rounded-2xl hover:bg-gray-100 ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300">
                         ${type.name}
                     </li>          
                 `
@@ -325,7 +323,7 @@ const loadAllPostType = () => {
 const loadPostCategoryWise = (search) =>{
     // console.log(search)
     // document.getElementById("loader").style.display = "block";
-    fetch(`https://softheal-api-drf.onrender.com/post/list/?search=${search? search : "" }`)
+    fetch(`https://soft-heal.vercel.app/post/list/?search=${search? search : "" }`)
     .then((res)=>res.json())
     .then((data)=>{
         // displayPetCategoryWise(data?.results)
