@@ -34,7 +34,7 @@
 
 - Each user has a personal profile page where they can:
 
-     ⚡ View their account information and balance.
+     ⚡ View their account information.
   
      ⚡ They can update info from here.
     
@@ -55,10 +55,10 @@
 ## Pages
 
 - #### Home
-- #### Explore Pet
-- #### Pet Details
-- #### Pet Add
-- #### Pet Edit
+- #### Explore Post
+- #### Post Details
+- #### Post Add
+- #### Post Edit
 - #### Profile
 - #### Service Details
 - #### About Us
