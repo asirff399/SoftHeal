@@ -151,7 +151,6 @@ const handleLogout = () =>{
 }
 const loadUserDetails = () => {
     const user_id = localStorage.getItem("user_id");
-  
     fetch(`https://soft-heal.vercel.app/users/${user_id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -165,93 +164,24 @@ const loadUserDetails = () => {
             document.getElementById("p-email").value = data.email
         }
       });
-    const custom_id = localStorage.getItem("custom_id");
-    fetch(`https://soft-heal.vercel.app/account/list/${custom_id}`)
+    fetch(`https://soft-heal.vercel.app/account/list/?user=${user_id}`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data)
         if(data)
-        {
-          document.getElementById("p-phone").value = data.phone
-          document.getElementById("p-address").value = data.address
-
-          document.getElementById("img").src = `${data.image}`;
-          document.getElementById("curr-p-img").value = data.image;
-          
-          document.getElementById("p-balance").innerText = `$${data.balance}`;
-
-          localStorage.setItem('user_type',data.user_type)
-            
+        { 
+          data.forEach((item)=>{
+            document.getElementById("p-phone").value = item.phone;
+            document.getElementById("p-address").value = item.address
+    
+            document.getElementById("img").src = `${item.image}`;
+            document.getElementById("p-btn-img").src = `${item.image}`;
+            document.getElementById("curr-p-img").value = item.image;
+    
+            localStorage.setItem('user_type',item.user_type)
+          })
         }
       });
 };
-const loadCustomId = () => {
-    const user_id = localStorage.getItem("user_id");
-    fetch(`https://soft-heal.vercel.app/account/list/?search=${user_id}`)
-      .then((res) => res.json())
-      .then((data) =>{
-        // console.log(data)
-        localStorage.setItem("custom_id", data[0].id)   
-    })
-};
-// const deposit = (event) => {
-//     event.preventDefault();
-//     const form = document.getElementById("deposit-form");
-//     const formData = new FormData(form);
-//     const data = {
-//       amount: formData.get("deposit"),
-//     };
-  
-//     // console.log(data);
-//     const token = localStorage.getItem("token");
-//     fetch("https://soft-heal.vercel.app/transaction/deposit/", {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Token ${token}`,
-//       },
-//       body: JSON.stringify(data),
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log(data);
-//         alert("Deposit successfully done!");
-//         window.location.href = "./profile.html";
-//       })
-      
-// };
-// document.addEventListener('DOMContentLoaded', function () {
-//   const element = document.getElementById('deposit-form');
-//   if (element) {
-//     element.addEventListener("submit", deposit);
-//   }
-// });
-// const donation = (event) => {
-//     event.preventDefault();
-//     const form = document.getElementById("donation-form");
-//     const formData = new FormData(form);
-//     const data = {
-//       amount: formData.get("donation-amount"),
-//     };
-//     const token = localStorage.getItem("token");
-//     const post_id = localStorage.getItem("post_id");
-
-//     fetch(`https://soft-heal.vercel.app/post/donate/${post_id}`, {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Token ${token}`,
-//       },
-//       body: JSON.stringify(data),
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log(data);
-//         alert("Donated successfully!");
-//         window.location.href = "./profile.html";
-//       })    
-// };
-
 const updateProfile = async (event) =>{
     event.preventDefault()
 
@@ -351,14 +281,7 @@ const changePass = (event) => {
       alert("Password Changed successfully!")
     });
 };
-// document.addEventListener('DOMContentLoaded', function () {
-//   const element = document.getElementById('donation-form');
-//   if (element) {
-//     element.addEventListener("submit", donation);
-//   }
-// });
 document.addEventListener('DOMContentLoaded', function() {
-  loadCustomId()
   loadUserDetails()
 });
 

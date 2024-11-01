@@ -104,15 +104,18 @@ const addPost = async (event) =>{
         }
 };
 const getPostDetail = () => {
-    const post_id = localStorage.getItem("post_id")
-    fetch(`https://soft-heal.vercel.app/post/list/${post_id}`)
-      .then((res) => res.json())
-      .then((post) => {
-        document.getElementById("ed-name").value = post.name;
-        document.getElementById("ed-description").value = post.description;
-        document.getElementById("ed-target").value = post.target;
-        document.getElementById("ed-post_add_type").value = post.post_type;
-      });
+    const postID = localStorage.getItem("post_id")
+    fetch(`https://soft-heal.vercel.app/post/list/${postID}`)
+    .then((res) => res.json())
+    .then((post) => {
+        if(post){
+            document.getElementById("ed-name").value = post.name;
+            document.getElementById("ed-description").value = post.description;
+            document.getElementById("ed-target").value = post.target;
+            document.getElementById("ed-post_add_type").value = post.post_type;
+        }
+    });
+    
 };
 const editPost = async (event)=>{
     event.preventDefault()

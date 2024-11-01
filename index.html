@@ -6,6 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <title>SoftHeal - Donation Site</title>
 </head>
 <body class="bg-gradient-to-r from-green-100 to-blue-200">
@@ -19,13 +20,13 @@
     </div>
     
     <!-- Hero Section/Banner -->
-    <section class="bg-gray-200 min-h-screen flex items-center" >
-        <div class="container mx-auto px-5 py-12">
+    <section class="py-11 flex items-center" >
+        <div class="container mx-auto px-5 py-11">
             <div class="grid md:grid-cols-2 gap-10 items-center">
                 <!-- Left Content -->
                 <div class="space-y-6">
-                    <h1 class="text-4xl lg:text-6xl font-mono text-black font-extrabold"><span class="text-red-500">Together We Can:</span> Contribute to a Brighter Future</h1>
-                    <p class="text-lg lg:text-xl text-gray-500">Join us in a collective journey of compassion and impact as we work hand in hand, transforming lives and nurturing hope around the world.</p>
+                    <h1 class="text-4xl lg:text-5xl font-mono text-black font-extrabold"><span class="text-red-500">Together We Can:</span> Contribute to a Brighter Future</h1>
+                    <p class="text-lg font-mono font-semibold italic text-teal-500">Join us in a collective journey of compassion and impact as we work hand in hand, transforming lives and nurturing hope around the world.</p>
                     <div class="flex space-x-4">
                         <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full flex items-center">
                       <i class="fa-solid fa-hand-holding-dollar me-2"></i> <a href="./allPost.html">Make A Donation</a>
@@ -56,7 +57,7 @@
     </section>
 
     <!-- donate post -->
-    <div class="p-6 my-11">
+    <div class="bg-slate-50 p-5 lg:p-20">
         <div class="w-full md:w-5/6 lg:w-4/6 gap-12 items-center mx-auto">
           <div class="lg:w-5/6 mx-auto">
               <h1 class="ml-2 md:ml-4 text-4xl mb-5 italic font-mono text-lime-600 font-bold hover:text-indigo-400">
@@ -66,34 +67,34 @@
             <p class="font-mono font-semibold italic text-teal-500 my-5">
               Explore our latest donation projects, where your contributions make a direct impact. Join us in supporting vital causes, bringing hope and resources to those in need. Every donation counts.</p>
           </div>
-          <div id="initial-post" class="mt-10 flex flex-wrap justify-center gap-6 ">
+          <div id="initial-post" class="my-10 flex flex-wrap justify-center gap-6 ">
   
           </div>
-          <button class="bg-black hover:bg-gray-900 my-11 mx-auto  text-white px-4 py-2 rounded-full flex items-center">
-            <a href="./allPost.html">Explore Projects   <i class="fa-solid fa-angles-right mx-2"></i></a> 
+          <button class="bg-black hover:bg-gray-900 mt-11 mx-auto  text-white px-4 py-2 rounded-full flex items-center">
+            <a href="./allPost.html">Explore Projects <i class="fa-solid fa-angles-right mx-2"></i></a> 
           </button>
         </div>
     </div>
     
     <!-- Section with 4 Alternating Rows -->
-    <section class="py-14 lg:py-24 bg-gray-100">
+    <section class="py-14 lg:py-24 mx-auto">
         <!-- First Row -->
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-6 lg:flex-row items-center">
+        <div class="md:w-5/6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-11 lg:flex-row items-center justify-center">
             <div class="text-left lg:w-2/5">
                 <h4 class="text-sm font-semibold text-orange-500 mb-2">Education support</h4>
                 <h2 class="text-4xl font-bold text-gray-900 mb-4">Empowering futures through education</h2>
                 <p class="text-gray-700 mb-6">We provide access to quality education for underprivileged children, unlocking their potential and brightening their future.</p>
                 <button class="bg-orange-500 text-white font-semibold py-2 px-4 rounded"><a href="./allPost.html">Donate Now <i class="fa-solid fa-arrow-right-long"></i></a></button>
             </div>
-            <div class="lg:w-3/5 mt-8 lg:mt-0 lg:ml-10">
-                <img src="./images/edu-support.jpg" alt="Description for Image 1" class="w-full h-auto rounded object-cover transition-transform ease-in-out duration-500 delay-150 hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-gray-200 transform-gpu hover:rotate-1 focus:outline-none focus:ring focus:ring-gray-300">
+            <div class="">
+                <img src="https://i.ibb.co.com/hcKnSp0/scholarship.jpg" style="width:470px;height:300px;" alt="Description for Image 1" class="w-full h-auto rounded-2xl object-cover ">
             </div>
         </div>
 
         <!-- Second Row -->
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-6 lg:flex-row items-center mt-14 lg:mt-24">
-            <div class="lg:w-3/5 mb-8 lg:mb-0 lg:mr-10">
-                <img src="./images/healthcare.jpg" alt="Description for Image 2" class="md:w-4/6 w-full h-auto rounded object-cover transition-transform ease-in-out duration-500 delay-150 hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-gray-200 transform-gpu hover:rotate-1 focus:outline-none focus:ring focus:ring-gray-300">
+        <div class="md:w-5/6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col-reverse gap-11 lg:flex-row items-center justify-center mt-14 lg:mt-24">
+            <div class="">
+                <img src="https://i.ibb.co.com/51MpR1T/healthcare.jpg" style="width:470px;height:300px;" alt="Description for Image 1" class="w-full h-auto rounded-2xl object-cover ">
             </div>
             <div class="text-left lg:w-2/5">
                 <h4 class="text-sm font-semibold text-orange-500 mb-2">Healthcare initiatives</h4>
@@ -104,22 +105,22 @@
         </div>
 
         <!-- Third Row -->
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-6 lg:flex-row items-center mt-14 lg:mt-24">
+        <div class="md:w-5/6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-11 lg:flex-row items-center justify-center mt-14 lg:mt-24">
             <div class="text-left lg:w-2/5">
                 <h4 class="text-sm font-semibold text-orange-500 mb-2">Livelihood programs</h4>
                 <h2 class="text-4xl font-bold text-gray-900 mb-4">Creating sustainable livelihoods</h2>
                 <p class="text-gray-700 mb-6">We empower individuals and families through skill development and microfinance initiatives, fostering self-sufficiency.</p>
                 <button class="bg-orange-500 text-white font-semibold py-2 px-4 rounded"><a href="./allPost.html">Donate Now <i class="fa-solid fa-arrow-right-long"></i></a></button>
             </div>
-            <div class="lg:w-3/5 mt-8 lg:mt-0 lg:ml-10">
-                <img src="./images/livelihood.jpg" alt="Description for Image 3" class="w-full h-auto rounded object-cover transition-transform ease-in-out duration-500 delay-150 hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-gray-200 transform-gpu hover:rotate-1 focus:outline-none focus:ring focus:ring-gray-300">
+            <div class="">
+                <img src="https://i.ibb.co.com/jw9PRb6/livelihood.webp" style="width:470px;height:300px;" alt="Description for Image 1" class="w-full h-auto rounded-2xl object-cover ">
             </div>
         </div>
 
         <!-- Fourth Row -->
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-6 lg:flex-row items-center mt-14 lg:mt-24">
-            <div class="lg:w-3/5 mb-8 lg:mb-0 lg:mr-10">
-                <img src="./images/flood2.jpg" alt="Description for Image 4" class="md:w-5/6 w-full h-auto rounded object-cover transition-transform ease-in-out duration-500 delay-150 hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-gray-200 transform-gpu hover:rotate-1 focus:outline-none focus:ring focus:ring-gray-300">
+        <div class="md:w-5/6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col-reverse gap-11 lg:flex-row items-center justify-center mt-14 lg:mt-24">
+            <div class="">
+                <img src="https://i.ibb.co.com/fnCJH8R/flood2.jpg" style="width:470px;height:300px;" alt="Description for Image 1" class="w-full h-auto rounded-2xl object-cover ">
             </div>
             <div class="text-left lg:w-2/5">
                 <h4 class="text-sm font-semibold text-orange-500 mb-2">Flood relief operations</h4>
@@ -131,12 +132,12 @@
     </section>
 
     <!-- Services -->
-    <div class="bg-white font-[sans-serif] py-16 bg-gradient-to-r from-green-100 to-blue-200">
+    <div class="bg-slate-50 font-[sans-serif] py-16">
         <div class="max-w-7xl mx-auto">
           <div class="text-center">
             <h2 class="text-3xl font-extrabold text-[#333] inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-pink-400 after:rounded-full">OUR MISSION</h2>
           </div>
-          <div id="service" class="flex flex-wrap justify-center items-center gap-6 mt-16 max-md:max-w-lg mx-auto">
+          <div id="service" class="flex flex-wrap justify-center items-center gap-11 mt-16 max-md:max-w-lg mx-auto">
             
             
             
@@ -145,7 +146,7 @@
     </div>
 
     <!-- Volunteer -->
-    <section class="bg-gray-50 py-14 lg:py-24 ">
+    <section class=" py-14 lg:py-24 ">
         <div class="md:w-5/6 lg:w-4/6 mx-auto flex flex-wrap lg:flex-nowrap justify-center items-center">
             <!-- Left Side: Text Content -->
             <div class="lg:max-w-[550px] px-4 mb-10 lg:mb-0 mx-auto">
@@ -156,20 +157,23 @@
             </div>
             <!-- Right Side: Image -->
             <div class="lg:w-1/2 px-4">
-                <img src="./images/volunteer.jpg" alt="Volunteer Image" class="w-full h-auto rounded-lg shadow-lg">
+                <img src="./images/volunteer.jpg" alt="Volunteer Image" class="w-full h-auto border-2 border-slate-50 rounded-lg shadow-lg">
             </div>
         </div>
     </section>
     
     <!-- Team Members -->
-    <div class="font-[sans-serif] lg:w-4/5 mx-auto my-5 py-11">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-gray-800 text-3xl font-extrabold">Meet our team</h2>
-            <p class="text-gray-800 text-sm mt-4 leading-relaxed">Meet our team of professionals to serve you.</p>
+    <div class="bg-slate-50 font-[sans-serif]  py-16">
+        <div class="lg:w-4/5 mx-auto">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-gray-800 text-3xl font-extrabold">Meet our team</h2>
+                <p class="text-gray-800 text-sm mt-4 leading-relaxed">Meet our team of professionals to serve you.</p>
+            </div>
+            <div id="team" class="flex flex-wrap justify-center gap-6 mt-12">
+                
+            </div>
         </div>
-        <div id="team" class="flex flex-wrap justify-center gap-6 mt-12">
-            
-        </div>
+        
     </div>
 
     <!-- Footer -->
@@ -180,6 +184,7 @@
     <script src="./auth.js"></script>
     <script src="./app.js"></script>
     <script src="./post.js"></script>
+    <script src="">loadUserProNav()</script>
 
 </body>
 </html>

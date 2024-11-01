@@ -4,32 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gradient-to-r from-green-100 to-blue-200">
   <!-- Navbar -->
   <div id="navbar"></div>
   <!-- All Post -->
-   <h1 class="text-center mx-auto my-11 font-mono text-4xl font-bold uppercase">All Projects</h1>
-  <div>
+  <div class="min-h-[80vh]">
     <!-- Post Category -->
-    <div class="w-4/6 mx-auto font-sans p-4">
-      <div class="w-3/6 mx-auto ">
-        <ul id="post-types" class="flex justify-center">
-          <li onclick="loadAllPost()" class="tab text-blue-600 font-bold text-[15px] py-2.5 px-5 cursor-pointer transition-transform rounded-2xl hover:bg-gray-100 ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300">
+    <div class="lg:w-4/6 mx-auto my-11 font-sans p-4">
+      <div class="lg:w-3/6 mx-auto ">
+        <ul id="post-types" class="flex flex-wrap lg:flex-nowrap justify-center items-center">
+          <li onclick="loadAllPost()" class="tab font-bold text-[15px] py-2.5 px-5 cursor-pointer transition-transform rounded-2xl hover:bg-gray-100 ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300">
               All
           </li>
       </ul>
       </div>
       
+    </div>
+
+    <!-- Posts -->
+    <div id="All-post" class="w-full md:w-[95%] lg:w-4/6 mx-auto flex-col justify-center items-center lg:gap-16 md:my-11 lg:my-16 lg:p-0 p-5"></div>
+    <div id="category-post" class="flex flex-wrap"></div>
   </div>
 
-
-    </div>
-    <!-- Posts -->
-    <div id="All-post" class="w-4/6 mx-auto flex flex-wrap gap-6 my-16 "></div>
-    <div id="category-post" class="flex flex-wrap"></div>
- </div>
 
   <!-- Footer -->
   <div id="footer" class="w-full"></div>

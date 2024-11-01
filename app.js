@@ -1,3 +1,22 @@
+const loadUserProNav = () => {
+    const user_id = localStorage.getItem("user_id");
+  
+    fetch(`https://soft-heal.vercel.app/users/${user_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById("p-btn-name").innerText = `${data.first_name } ${data.last_name}`
+        document.getElementById("p-btn-email").innerText = data.email
+      });
+    fetch(`https://soft-heal.vercel.app/account/list/?user=${user_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.forEach((cus)=>{
+            document.getElementById("p-btn-img").src = `${cus.image}`;
+            document.getElementById("p-btn-img2").src = `${cus.image}`;
+        })
+      });
+  };
+loadUserProNav()
 function formatDate(dateStr) {
     const date = new Date(dateStr);
     const options = {
@@ -83,10 +102,13 @@ const displayAllPost = (posts) => {
         div.classList.add("all-post-card")
         const formattedDate = formatDate(post.created_on);
         div.innerHTML = `
-                <div class="bg-white rounded overflow-hidden transition-transform ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300" style="width: 400px;">
-                    <img class="h-48 w-full object-cover object-center" src=${post.image} alt="Product Image" />
-                    <div class="p-6">
-                        <h1><strong class="mb-2 text-xl text-black font-mono font-bold">${post.name.slice(0,30)}</strong> </h1>
+                <div class="w-full my-10 bg-white lg:flex border border-slate-300 rounded-xl overflow-hidden transition-transform ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300">
+                    <div class="h-64 lg:w-[500px] lg:me-16">
+                        <img class="w-full h-full object-cover" src=${post.image} alt="Product Image" />
+                    </div>
+                    <div class="m-5">
+                        <h1><strong class="mb-2 text-2xl lg:text-3xl text-black font-mono font-bold">${post.name.slice(0,30)}</strong> </h1>
+                        <p class="font-mono font-semibold text-teal-500 my-3 lg:my-5">${post.description.slice(0,100)}...</p>
                         <p class="text-red-800 text-[13px] font-bold italic my-2">${formattedDate}</p>
                         <div class="flex justify-between mt-5">
                             <button class="bg-orange-500 text-white font-semibold py-2 px-4 rounded"><a href="./post_details.html?post_id=${post.id}">Donate Now <i class="fa-solid fa-arrow-right-long"></i></a></button>
@@ -128,7 +150,7 @@ const displayInitialPost = (posts) => {
         div.classList.add("post-card")
         const formattedDate = formatDate(post.created_on);
         div.innerHTML = `
-                <div class="bg-white rounded overflow-hidden transition-transform ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300" >
+                <div class="bg-white border border-slate-300 rounded-xl overflow-hidden transition-transform ease-in-out duration-500 delay-150 hover:translate-y-1 hover:scale-95 hover:shadow-xl hover:shadow-gray-200 transform-gpu focus:outline-none focus:ring focus:ring-gray-300" >
                     <img class="h-48 w-full object-cover object-center" src=${post.image} alt="Product Image" />
                     <div class="p-6">
                         <h1 ><strong class="mb-2 text-xl text-black font-mono font-bold">${post.name}</strong> </h1>
@@ -155,12 +177,12 @@ const loadTeam = () =>{
                 const div = document.createElement("div")
                 div.classList.add("sv-card")
                 div.innerHTML = `               
-                   <div class="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative" style="width: 320px;">
+                   <div class="grid grid-cols-3 items-center shadow-xl bg-slate-100 border border-gray-300 p-4 rounded-lg relative" style="width: 320px;">
                         <div class="col-span-2">
                             <img src=${team.image} class="rounded-lg" style="width: 300px;height:190px;" />
                         </div>
 
-                        <div class="bg-white rounded-lg p-4 absolute right-4 shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] ">
+                        <div class="bg-white rounded-lg p-4 border border-gray-300 absolute right-4 shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] ">
                             <h4 class="text-gray-800 text-sm font-bold">${team.name}</h4>
                             <p class="text-gray-800 mt-2 text-xs">${team.work}</p>
                         </div>
@@ -182,7 +204,7 @@ const loadAllService = () =>{
                 const div = document.createElement("div")
                 div.classList.add("sv-card")
                 div.innerHTML = `               
-                   <div class="bg-white cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group" style="width: 350px;">
+                   <div class="bg-white border border-gray-300 cursor-pointer rounded-2xl overflow-hidden shadow-xl relative group" style="width: 350px;">
                     <img src=${service.image} alt="Blog Post 1" class="w-full h-96 object-cover " />
                     <div class="p-6 absolute bottom-0 left-0 right-0 bg-white opacity-90">
                         <h3 class="text-xl font-bold text-[#333]">${service.title}</h3>

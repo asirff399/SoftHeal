@@ -8,16 +8,11 @@ fetch("navbar.html")
 		const token = localStorage.getItem("token")
 		// console.log(token)
     
-		if(token){
-			navElement.innerHTML=`			
-                <a href="./profile.html" class="text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">PROFILE</a>
-			`
-		}
-		else{
+		if(!token){
 			navElement.innerHTML=`
-				<div class="flex font-semibold ">
-						<a href="./login.html" class=" text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">LOGIN</a>
-						<a href="./registration.html" class=" text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">REGISTER</a>
+				<div class="flex flex-wrap md:flex-nowrap lg:flex-nowrap font-semibold" >
+					<a href="./login.html" class=" md:text-xl lg:text-xl font-mono text-center md:m-3 lg:m-3 hover:border-b-4 hover:border-black p-1 font-extrabold " >LOGIN</a>
+					<a href="./registration.html" class=" md:text-xl lg:text-xl font-mono text-center md:m-3 lg:m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">REGISTER</a>
 				</div>
 			`
 		}

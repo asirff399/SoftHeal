@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create a Post</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
         body {
             background: linear-gradient(135deg, rgba(100, 143, 255, 0.5), rgba(193, 228, 255, 0.8)), url('https://source.unsplash.com/1600x900/?pattern');
@@ -31,7 +32,7 @@
     </div>
 
     <!-- Add Post -->
-    <div class="w-full my-11 bg-white mx-auto bg-opacity-90 p-8 rounded-2xl shadow-2xl max-w-lg ">
+    <div class="w-full my-11 bg-white border border-gray-400 mx-auto bg-opacity-90 p-8 rounded-2xl shadow-2xl max-w-lg ">
         <h1 class="text-3xl font-extrabold mb-6 text-gray-800 text-center">Create a New Post</h1>
         <form id="add-post" onsubmit="addPost(event)" method="POST" enctype="multipart/form-data">
 
