@@ -14,7 +14,7 @@
 - Users can register, log in, and log out.
 - Users can donate.
 - User can review the post he/she donated.
-- User can filter post category-wise.
+- User can filter posts category-wise.
 
 ## Features
 
@@ -46,19 +46,19 @@
 
 ### Admin Controls
 
-- Administrators have full access to manage the platform. They can add, edit, and delete any posts, ensuring the smooth operation and integrity of the.
+- Administrators have full access to manage the platform. They can add, edit, and delete any posts, ensuring their smooth operation and integrity.
 
 ### Volunteer
 
--There was a volunteer register form. Where anyone can send a request to join us as a volunteer.
+-There was a volunteer register form where anyone could send a request to join us as a volunteer.
 
 ## Pages
 
 - #### Home
-- #### Explore Pet
-- #### Pet Details
-- #### Pet Add
-- #### Pet Edit
+- #### Explore Post
+- #### Post Details
+- #### Post Add
+- #### Post Edit
 - #### Profile
 - #### Service Details
 - #### About Us
