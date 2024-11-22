@@ -34,15 +34,15 @@
 
 - Each user has a personal profile page where they can:
 
-     ⚡ View their account information and balance.
+     ⚡ View their account information.
   
      ⚡ They can update info from here.
     
      ⚡ View their donation history.
 
-### Donation History Dashboard
+### Donation History
 
-- A dedicated section that displays the user's donation history, providing a clear overview of their activity on the platform.
+- Here displays the user's donation history, providing a clear overview of their donation history.
 
 ### Admin Controls
 
@@ -52,13 +52,17 @@
 
 -There was a volunteer register form. Where anyone can send a request to join us as a volunteer.
 
+### Admin Controls
+
+- A dedicated section that displays a clear overview of the platform activities Add posts, See all models as table view, and more. But it was imperfect and required many updates to make it functional.
+
 ## Pages
 
 - #### Home
-- #### Explore Pet
-- #### Pet Details
-- #### Pet Add
-- #### Pet Edit
+- #### Explore Post
+- #### Post Details
+- #### Post Add
+- #### Post Edit
 - #### Profile
 - #### Service Details
 - #### About Us
@@ -76,15 +80,15 @@
 ---
 
 ## 🌐 Deployment: Deployed using Netlify.
-Live link: 
+Front-end Live link: 
 
     https://softheal.netlify.app
 
 ## GitHub!
-Backend: 
+Back-end Repo: 
 
     https://github.com/asirff399/SoftHeal-DRF
 
-Backend live link:
+API live link:
 
     https://soft-heal.vercel.app/
