@@ -50,7 +50,7 @@
 
 ### Volunteer
 
--There was a volunteer register form where anyone could send a request to join us as a volunteer.
+- There was a volunteer register form where anyone could send a request to join us as a volunteer.
 
 ### Admin Dashboard
 
