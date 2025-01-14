@@ -51,25 +51,35 @@ const addPost = async (event) =>{
     const form = document.getElementById("add-post")
     const formData = new FormData(form)
     const token = localStorage.getItem("token")
-    // console.log(token)
 
     const imageFile = document.getElementById('image').files[0]
 
-    const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
-    const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+    const cloudinaryUrl = `https://api.cloudinary.com/v1_1/djjx7ln02/image/upload`;
+    const uploadPreset = "softheal"; 
+    
+    if (!imageFile) {
+        showError("Please select an image to upload.");
+        return;
+    }
 
     const imageData = new FormData()
-    imageData.append('image',imageFile)
-
+    imageData.append('file',imageFile)
+    imageData.append('upload_preset',uploadPreset)
 
     try{
-        const imgbbResponse = await fetch(imgbbUrl,{
+        const cloudinaryResponse = await fetch(cloudinaryUrl,{
             method:'POST',
             body: imageData,
         })
 
-        const imgbbData = await imgbbResponse.json()
-        const imageUrl = imgbbData.data.url;
+        const cloudinaryData = await cloudinaryResponse.json();
+
+        if(!cloudinaryResponse.ok){
+            console.error("Cloudinary error response:", cloudinaryData);
+            showError("Failed to upload image to Cloudinary: " + cloudinaryData.error.message);
+            return;
+        }
+        const imageUrl = cloudinaryData.secure_url;
 
         const postData = {
             name:formData.get("name") ,
@@ -140,20 +150,31 @@ const editPost = async (event)=>{
 
     const imageFile = document.getElementById('ed-image').files[0]
 
-    const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
-    const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+    const cloudinaryUrl = `https://api.cloudinary.com/v1_1/djjx7ln02/image/upload`;
+    const uploadPreset = "softheal"; 
+    
+    if (!imageFile) {
+        showError("Please select an image to upload.");
+        return;
+    }
 
     const imageData = new FormData()
-    imageData.append('image',imageFile)
+    imageData.append('file',imageFile)
+    imageData.append('upload_preset',uploadPreset)
 
     try{
-        const imgbbResponse = await fetch(imgbbUrl,{
+        const cloudinaryResponse = await fetch(cloudinaryUrl,{
             method:'POST',
             body: imageData,
         })
+        const cloudinaryData = await cloudinaryResponse.json();
 
-        const imgbbData = await imgbbResponse.json()
-        const imageUrl = imgbbData.data.url;
+        if(!cloudinaryResponse.ok){
+            console.error("Cloudinary error response:", cloudinaryData);
+            showError("Failed to upload image to Cloudinary: " + cloudinaryData.error.message);
+            return;
+        }
+        const imageUrl = cloudinaryData.secure_url;
 
         const editPostData = {
             name:formData.get("ed-name") ,
